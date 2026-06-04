@@ -4,24 +4,19 @@
 
 ## 安装方法
 
-### 方法 1：复制到 Codex skills 目录
+### 将命令直接复制给codex自动安装
 
 ```bash
-git clone https://github.com/Tumi1024/gd-animation-skill.git generate-demo-animation-skill
-mkdir -p ~/.codex/skills
-cp -R generate-demo-animation-skill ~/.codex/skills/generate-demo-animation
+mkdir -p ~/.agents/skills
+cd ~/.agents/skills
+git clone https://github.com/Tumi1024/gd-animation-skill.git generate-demo-animation
 ```
 
-重启 Codex 后，发送“生成演示动画”或提出相关动画制作任务即可触发。
-
-### 方法 2：作为本地 skill 开发
-
+## 更新
 ```bash
-git clone https://github.com/Tumi1024/gd-animation-skill.git
-cd generate-demo-animation-skill
+cd ~/.agents/skills/generate-demo-animation
+git pull
 ```
-
-编辑 `SKILL.md`、`references/`、`memory/` 后，再同步到 `~/.codex/skills/generate-demo-animation`。
 
 ## 使用方法
 
