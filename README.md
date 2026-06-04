@@ -7,7 +7,7 @@
 ### 方法 1：复制到 Codex skills 目录
 
 ```bash
-git clone <your-repo-url> generate-demo-animation-skill
+git clone [<your-repo-url>](https://github.com/Tumi1024/gd-animation-skill.git) generate-demo-animation-skill
 mkdir -p ~/.codex/skills
 cp -R generate-demo-animation-skill ~/.codex/skills/generate-demo-animation
 ```
@@ -17,7 +17,7 @@ cp -R generate-demo-animation-skill ~/.codex/skills/generate-demo-animation
 ### 方法 2：作为本地 skill 开发
 
 ```bash
-git clone <your-repo-url>
+git clone [<your-repo-url>](https://github.com/Tumi1024/gd-animation-skill.git)
 cd generate-demo-animation-skill
 ```
 
