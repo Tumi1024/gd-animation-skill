@@ -21,3 +21,8 @@ File: memory/lessons/L003.md
 Tags: math, spatial-relationship, knowledge-expression-error, animation-design-error, timing-sync-error
 Summary: For math demo animations, derive key constructs from the exact givens in the problem; do not replace them with generic helper points, canvas centerlines, or routes that ignore stated constraints.
 File: memory/lessons/L004.md
+
+## L005
+Tags: problem-understanding-error, memory-retrieval-error, tooling-missing-error, self-check-error, hyperframes, remotion
+Summary: Before demo animation implementation, enforce the full preflight gate: retrieve memory, verify problem meaning and answer logic, choose HyperFrames or Remotion first, check tooling, then create planning tables and self-check checklist.
+File: memory/lessons/L005.md

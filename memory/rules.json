@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "purpose": "Rules for targeted retrieval and update of reusable issue memory before and after generate-demo-animation tasks.",
   "pre_task_retrieval": {
     "must_read": [
@@ -15,9 +15,21 @@
     "do_not": [
       "Do not read all memory/lessons files.",
       "Do not read all archived cases.",
-      "Do not read the entire issue log when targeted search is enough."
+      "Do not read the entire issue log when targeted search is enough.",
+      "Do not skip memory retrieval before content analysis or implementation."
+    ],
+    "must_state_before_code": [
+      "Task tags used for retrieval.",
+      "Issue IDs selected and their concrete rules.",
+      "Lesson IDs selected and their concrete rules, or that no relevant lesson was found."
     ]
   },
+  "pre_implementation_gates": [
+    "Problem-understanding audit for givens, target, constraints, forbidden assumptions, and solution path.",
+    "HyperFrames or Remotion selected as the first implementation route.",
+    "Remotion/HyperFrames tooling checked or installed before implementation.",
+    "Self-check plan defined for logic, visual causality, layout, timing, and export."
+  ],
   "issue_entry_schema": {
     "id": "Ixxx",
     "tags": ["content-domain", "expression-type", "risk", "object-type"],

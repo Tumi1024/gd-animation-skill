@@ -7,6 +7,8 @@ description: Use when the user says "生成演示动画" or asks to create, desi
 
 Use this skill to make production-ready programmatic animation videos, not disposable webpage demos. Default to HyperFrames or Remotion, keep animation deterministic, and require user confirmation before writing or editing code.
 
+At the start of every task, enforce five gates before implementation: problem-understanding audit, issue/lesson memory retrieval, HyperFrames-or-Remotion route selection, tooling readiness check, and strict self-check plan. If any gate fails, stop and fix the plan before coding.
+
 For the full rule set, read `references/production-rules.md` when starting a new animation project, when changing architecture, when syncing to audio/subtitles, or before final export.
 
 Use memory only by targeted retrieval. Before a new animation task, read `memory/rules.json`, then search `memory/issue_log.md` and `memory/lessons_index.md` by task tags. Select the most relevant issue entries and at most 3 lesson files. Do not read all `memory/lessons/` files, all archived cases, or the full issue log when targeted search is enough.
@@ -14,6 +16,7 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
 ## Core Stance
 
 - Act as a programmatic animation director, knowledge-visualization designer, and HyperFrames/Remotion engineer.
+- Use HyperFrames or Remotion as the first implementation route. A normal HTML page, SVG-only file, Canvas-only file, or Manim-only project is only allowed as a temporary prototype unless the user explicitly requests that final format.
 - Use HyperFrames for course animations, explainer videos, HTML/CSS/SVG/Canvas/GSAP visuals, audio-synced timelines, and information visualization.
 - Use Remotion for React component structure, data-driven animation, complex scene management, reusable templates, or batch generation.
 - Do not use AI video generation models as the final animation method unless the user explicitly requests them.
@@ -32,6 +35,7 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
    - Select up to 5 issue entries with the highest overlap in content domain, expression type, object type, and risk.
    - State the selected issue IDs and the concrete rule they impose on the current task.
    - If no issue entry matches, state that no similar issue was found.
+   - This step is mandatory. Do not proceed to content analysis, storyboarding, or code if `memory/rules.json` has not been read and `memory/issue_log.md` plus `memory/lessons_index.md` have not been searched.
 
 2. **Retrieve Lessons**
    - Search only `memory/lessons_index.md` for matching lessons.
@@ -40,31 +44,45 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
    - If no lesson matches, state that no relevant lesson was found and use the default workflow.
    - Never load all lessons or all archived cases.
 
-3. **Analyze Content**
+3. **Audit Problem Understanding And Answer Logic**
+   - Restate the user's task in one short paragraph.
+   - For math, science, puzzle, route, proof, diagram, or other accuracy-sensitive tasks, extract:
+     - Given conditions
+     - Required answer or target
+     - Constraints and forbidden assumptions
+     - Known objects and relationships
+     - Candidate solution path
+     - Final answer or construction result
+   - Verify the solving path before storyboarding. If the answer, construction, formula, causality, or interpretation is uncertain, pause and ask for confirmation or verify with reliable references.
+   - Do not animate a solution that has not passed this problem-understanding audit.
+
+4. **Analyze Content**
    - Classify the content type: scientific principle, history, product, data visualization, process, story, tutorial, concept explanation, or other.
    - Extract the core message, participants/objects, relationships, change process, and intended viewer takeaway.
    - Audit script accuracy before storyboarding. If facts, logic, terminology, or wording are inaccurate or misleading, propose corrections before production.
    - Split the content into scenes. Each scene should carry one main expression goal.
 
-4. **Choose Medium**
-   - Pick HyperFrames or Remotion based on the task.
+5. **Choose Medium And Check Tooling**
+   - Pick HyperFrames or Remotion before considering any other implementation route.
    - Note why the chosen medium fits.
+   - Check whether the project already has the required tooling. Prefer the repository `package.json` if present; otherwise run or recommend `npm install` for Remotion/HyperFrames dependencies before implementation.
+   - Use the bundled starter templates in `templates/remotion/` or `templates/hyperframes/` when creating a new project from scratch.
    - Use Manim only when formula/geometric derivation is genuinely needed, and still keep video export in scope.
 
-5. **Build Time Plan**
+6. **Build Time Plan**
    - If audio/subtitles exist, read the duration/timecodes and build a "timecode -> line/content -> visual action -> element state" table.
    - If no audio/subtitles exist, plan natural timing with start/end times, scene goals, and holds for comprehension.
    - Key actions must bind to absolute time or frame numbers, not rough intuition.
    - If knowledge points or plot beats progress step by step, preserve visual continuity across scenes, including style, composition, spatial structure, camera logic, recurring objects, and motion direction.
 
-6. **Build Visual-Causality Plan**
+7. **Build Visual-Causality Plan**
    - For each scene, list objects, meanings, why each object moves, how it moves, labels/lines/colors, primary vs auxiliary elements, and hidden/export-only decisions.
    - Match visuals to the script's knowledge stage, historical stage, or cognitive stage. Do not use a later correct model to visualize an earlier partial or mistaken model.
    - When accuracy is uncertain, verify with reliable references or image references before drawing the model.
    - If the animation will be inserted into an existing video, first extract the source video's style rules: character style, space, palette, lighting, camera, material, and visual density. The new animation must belong to that style system.
    - Remove meaningless guides, arrows, particles, labels, glows, or motion.
 
-7. **Build Knowledge-Expression Design Before SVG**
+8. **Build Knowledge-Expression Design Before SVG**
    - Before generating any SVG animation, extract the core knowledge points from the current script segment.
    - Identify likely viewer misunderstandings.
    - State the visual method that best expresses each knowledge point.
@@ -72,30 +90,37 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
    - Output the animation storyboard notes.
    - Only after completing these steps may SVG code be generated.
 
-8. **Explain Memory And Lesson Application**
+9. **Explain Memory And Lesson Application**
    - When presenting the animation plan, include a short issue-memory note for any retrieved issues.
    - Format: `Applied Ixxx because this task involves <tag>; therefore <rule>.`
    - When presenting the animation plan, include a short lesson-application note for any retrieved lessons.
    - Format: `Applied Lxxx because this task involves <tag>; therefore <rule>.`
    - Issues and lessons support judgment but never replace current task analysis.
 
-9. **Ask For User Confirmation Before Code**
-   - Before writing or editing implementation code, present the scene plan, timing plan, visual-causality plan, technical approach, and any assumptions.
+10. **Ask For User Confirmation Before Code**
+   - Before writing or editing implementation code, present the problem-understanding audit, answer/logic audit, scene plan, timing plan, visual-causality plan, technical approach, tooling check, and any assumptions.
+   - For animation production, the confirmation package must include five tables/checklists:
+     - Scene table
+     - Timeline table
+     - Element state table
+     - Key action table
+     - Self-check checklist
    - Wait for explicit user confirmation before code changes. This prevents avoidable rework.
    - For a narrow bug fix, state the exact files/areas and intended edits first; proceed only after user approval unless the user already explicitly asked to apply that fix.
 
-10. **Implement Deterministically**
+11. **Implement Deterministically**
    - HyperFrames: define composition metadata, mount audio clips, register paused timelines on `window.__timelines`, and make all animation seekable.
    - Remotion: define `Composition` width/height/fps/duration, use frame-driven animation, `staticFile`, and `Audio`.
    - Do not drive core animation with real time, uncontrolled randomness, or browser playback state.
 
-11. **Preview And Iterate**
+12. **Preview And Iterate**
    - Provide a preview URL/path.
-   - Check that the current visual matches the current script/audio moment.
+   - Check that the current visual matches the current script/audio moment and the validated answer/logic path.
    - Check whether the frame contains unnecessary elements, unclear visual expression, unclear styling/motion, or inaccurate visual meaning. If so, report the issue and ask the user to decide before changing it.
+   - If logic, answer, layout, timing, or visual meaning is wrong, self-correct and regenerate the preview before presenting it as ready.
    - Modify only the affected scope when the user gives feedback.
 
-12. **Retrospect After User Feedback**
+13. **Retrospect After User Feedback**
    - When the user points out animation problems, requests a correction, corrects an expression error, or adds a requirement, do not only fix the current output.
    - Also output a concise lesson retrospective:
      - Original request
@@ -109,15 +134,19 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
    - If the lesson is reusable, propose adding it to `memory/lessons_index.md` and `memory/lessons/Lxxx.md`. Write it only when the user explicitly asks to add/save/record it, or when the current task explicitly includes updating the skill memory.
    - If the issue is procedural, visual, or implementation-specific and likely to recur, append a concise tagged entry to `memory/issue_log.md` when the user explicitly asks to record it or when the current task explicitly includes updating this skill memory.
 
-13. **Export And Verify**
+14. **Export And Verify**
    - Export only after preview is accepted or the user asks for export.
    - Check resolution, fps, duration, audio, subtitle state, output file path, and key frames.
    - If any check fails, fix and re-export before saying it is complete.
 
 ## Hard Rules
 
+- Do not skip the problem-understanding audit for math, science, puzzle, route, proof, diagram, or accuracy-sensitive tasks. Wrong interpretation or wrong answer invalidates the animation.
+- Do not implement the final animation as plain HTML/SVG/Canvas when HyperFrames or Remotion can satisfy the task. Plain HTML/SVG/Canvas may be used only as a prototype layer or inside HyperFrames/Remotion.
+- Do not start coding before checking Remotion/HyperFrames tooling and selecting one as the primary route.
 - Do not leave debug UI, browser controls, side panels, caption boxes, or progress controls in final video unless requested.
 - Do not read all lesson files, all archived cases, or the full issue log during normal generation. Retrieve issue entries by searching `memory/issue_log.md` with task tags, then retrieve lessons from `memory/lessons_index.md` and read at most 3 lesson files.
+- Do not proceed if issue/lesson memory was not retrieved. Read/search the memory files first, then state which rules apply.
 - Do not burn subtitles by default. Use subtitle files for timing unless the user asks to display subtitles.
 - Do not produce from an inaccurate script without first flagging factual, logical, terminology, or wording issues and proposing fixes.
 - Do not draw a visual model that contradicts the script's knowledge stage, historical stage, cognitive stage, or intended misconception/correction sequence.
@@ -134,6 +163,9 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
 
 Before any "done" response, verify:
 
+- Problem understanding: the task has been restated; givens, target answer, constraints, forbidden assumptions, and solution path are listed and consistent.
+- Answer logic: math/science/puzzle/route/proof answers have been checked before visuals are produced.
+- Planning artifacts: scene table, timeline table, element state table, key action table, and self-check checklist have been created before implementation.
 - Content: current scene matches current script/audio/subtitle moment.
 - Accuracy: script claims have been checked; inaccurate or misleading knowledge points have proposed corrections.
 - Logic: every motion, color, label, line, arrow, and position has a meaning.
@@ -148,7 +180,7 @@ Before any "done" response, verify:
 - Stage fidelity: the visual model matches the current knowledge/historical/cognitive stage.
 - Style continuity: if inserted into existing media, the animation style matches the source video's palette, lighting, material, camera, and density.
 - Progressive continuity: if the content is step-by-step, visual style, composition, structure, recurring objects, and camera logic remain coherent across stages.
-- Engineering: the project is HyperFrames or Remotion, seekable, previewable, and exportable.
+- Engineering: the project is HyperFrames or Remotion first, with required tooling checked, seekable, previewable, and exportable.
 - Layout: no extra UI, no borders/bands, no overflow, no unreadable or obstructive text.
 - Media: assets load, audio is mounted/exported, subtitle display follows user instruction.
 - Export: final file path, resolution, fps, duration, and keyframe screenshots have been checked.

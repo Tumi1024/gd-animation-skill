@@ -16,6 +16,76 @@ Rule: Never synthesize the final video before preview acceptance unless the user
 
 Source: `examples/puzzle-board-fill-demo`
 
+## I012: Verify Problem Meaning And Answer Before Animation
+
+Tags: problem-understanding-error, knowledge-expression-error, math, science, puzzle, route, proof, spatial-relationship
+
+Trigger: A task contains a question, puzzle, diagram, route, proof, scientific explanation, or any content where the correct answer or reasoning path affects the animation.
+
+Mistake: Starting storyboards or visuals before fully understanding the givens, target, constraints, and correct solution, causing the animation to teach a wrong answer or solve a different problem.
+
+Fix: Build a problem-understanding audit first: given conditions, target requirement, constraints, forbidden assumptions, inferred relationships, solution steps, final answer or construction, and verification status.
+
+Rule: Do not storyboard or implement accuracy-sensitive animation until the answer and reasoning path have been explicitly checked. If uncertain, pause and ask for confirmation or verify with reliable sources.
+
+Source: `user-feedback/gd-animation-skill`
+
+## I013: HyperFrames Or Remotion Must Be The Primary Route
+
+Tags: technical-implementation-error, animation-design-error, hyperframes, remotion, workflow
+
+Trigger: A user asks for a formal demo animation, teaching animation, explainer video, preview, or exportable video.
+
+Mistake: Building a standalone HTML/SVG/Canvas page or unrelated prototype as the final route instead of starting from HyperFrames or Remotion.
+
+Fix: Select HyperFrames or Remotion before coding. Use standalone HTML/SVG/Canvas only as an internal layer, prototype, or visual test that will be integrated into the chosen video framework.
+
+Rule: Final animation projects must be HyperFrames or Remotion first unless the user explicitly requests another final format.
+
+Source: `user-feedback/gd-animation-skill`
+
+## I014: Tooling Must Be Declared And Checked Before Build
+
+Tags: tooling-missing-error, technical-implementation-error, hyperframes, remotion, workflow
+
+Trigger: A task requires creating or modifying a HyperFrames or Remotion animation project.
+
+Mistake: Planning to use HyperFrames or Remotion without checking whether the project has the required packages, CLI, starter files, or install instructions.
+
+Fix: Check `package.json` and local dependencies. If missing, install or declare `hyperframes`, `remotion`, `@remotion/cli`, `@remotion/renderer`, `react`, and `react-dom` before implementation.
+
+Rule: Do not start framework-specific animation code until the required HyperFrames/Remotion tooling is present or the installation step is clearly included.
+
+Source: `user-feedback/gd-animation-skill`
+
+## I015: Memory Retrieval Is A Hard Pre-Task Gate
+
+Tags: memory-retrieval-error, workflow, knowledge-expression-error, animation-design-error, visual-layout-error
+
+Trigger: Any new animation task, especially one involving math, science, diagrams, routes, timing, layout, or export.
+
+Mistake: Ignoring the skill memory and repeating known failures in problem understanding, framework choice, visual logic, timing, or export checks.
+
+Fix: Before content analysis or code, read `memory/rules.json`, search `memory/issue_log.md`, search `memory/lessons_index.md`, and read only selected lesson files.
+
+Rule: State the retrieved issue IDs and lesson IDs before coding. If no entry matches, state that no relevant memory was found and continue with the default workflow.
+
+Source: `user-feedback/gd-animation-skill`
+
+## I016: Self-Check Must Fix Objective Errors Before Delivery
+
+Tags: self-check-error, visual-layout-error, timing-sync-error, knowledge-expression-error, export-format-error, workflow
+
+Trigger: Preview or export contains wrong logic, wrong answer, mismatched timing, layout overlap, missing assets, wrong framework route, or visible render defects.
+
+Mistake: Treating self-check as a checklist to mention rather than a gate that blocks delivery, so known logic or visual errors reach the user.
+
+Fix: Run logic, visual-causality, layout, timing, framework, asset, and export checks. If an objective error is found, fix it and re-check before saying the preview or export is ready.
+
+Rule: Do not deliver a preview/export as complete when self-check finds a concrete error. Self-correct first; ask the user only for subjective design choices or ambiguous interpretations.
+
+Source: `user-feedback/gd-animation-skill`
+
 ## I002: Do Not Replace The Problem Type
 
 Tags: math, spatial-relationship, knowledge-expression-error, animation-design-error, puzzle, symmetry

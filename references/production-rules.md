@@ -12,15 +12,23 @@ Act as:
 
 Create video animations from user-provided scripts, storyboards, audio, subtitles, images, data, or assets. The output must support formal video export, not only browser preview.
 
-## 2. Technology Selection
+## 2. Technology Selection And Tooling Gate
 
-Prefer:
+Use HyperFrames or Remotion first. Plain HTML/SVG/Canvas is allowed only as a temporary prototype or as an internal layer inside HyperFrames/Remotion. Manim is allowed only for math/formula/geometry derivation segments and must still preserve a formal video export path.
 
 - **HyperFrames**: HTML/CSS/SVG/Canvas/GSAP animation, course animation, information visualization, audio/subtitle-synced explainer videos.
 - **Remotion**: React componentized video, reusable templates, batch generation, data-driven animation, complex scene state.
-- **Manim**: math formulas, geometry proofs, coordinate transformations, only when useful; still preserve video export path.
+- **Manim**: math formulas, geometry proofs, coordinate transformations, only when useful.
 
 Avoid AI video generation as the final production route unless explicitly requested.
+
+Before implementation:
+
+1. Choose `HyperFrames` or `Remotion` and state why.
+2. Check for `package.json`, installed dependencies, and the required CLI.
+3. If tooling is missing, run or instruct `npm install` before coding.
+4. For new projects, start from `templates/hyperframes/` or `templates/remotion/` when available.
+5. Do not create a final deliverable as a standalone non-exportable webpage.
 
 ## 3. Mandatory Pre-Code Confirmation
 
@@ -29,18 +37,28 @@ Before writing or editing implementation code, submit for user confirmation:
 1. Task tags
 2. Retrieved lessons, if any
 3. Lesson application note, if any
-4. Content classification
-5. Script knowledge-accuracy audit
-6. Knowledge-stage / historical-stage / cognitive-stage visual model table
-7. Style reference analysis if the animation will be inserted into an existing video
-8. Progressive continuity plan if the knowledge points or plot are step-by-step
-9. Scene split
-10. Timing table
-11. Visual-causality table
-12. SVG knowledge-expression design when SVG animation will be generated
-13. Technical route
-14. Asset assumptions
-15. Expected preview/export method
+4. Problem-understanding audit
+5. Answer/logic audit for math, science, puzzle, route, proof, diagram, or accuracy-sensitive tasks
+6. Content classification
+7. Script knowledge-accuracy audit
+8. Knowledge-stage / historical-stage / cognitive-stage visual model table
+9. Style reference analysis if the animation will be inserted into an existing video
+10. Progressive continuity plan if the knowledge points or plot are step-by-step
+11. Scene split
+12. Timing table
+13. Visual-causality table
+14. SVG knowledge-expression design when SVG animation will be generated
+15. Technical route and tooling readiness
+16. Asset assumptions
+17. Expected preview/export method
+
+For animation production, include these concrete artifacts before implementation:
+
+- Scene table: `scene | time range | purpose | content | output state`
+- Timeline table: `start-end/frame | narration/subtitle | visual action | element state | check point`
+- Element state table: `element | meaning | initial state | scene changes | final/export state`
+- Key action table: `time/frame | trigger | action | affected elements | verification point`
+- Self-check checklist: `check item | method | expected result | pass/fail | fix if failed`
 
 Do not start code work until the user confirms the plan. For small fixes, state the exact intended edit and wait for confirmation unless the latest user message clearly asks you to make that fix immediately.
 
@@ -53,7 +71,7 @@ This skill has a small targeted memory:
 - `memory/tags.md`: tag standards.
 - `memory/lessons_index.md`: short searchable lesson index.
 - `memory/lessons/Lxxx.md`: one full lesson per file.
-- `cases/`: full cases for review and archival only.
+- `examples/`: case templates and archived cases for review only.
 
 Before a new animation task:
 
@@ -113,6 +131,20 @@ Lesson Application:
 Lessons support judgment but do not replace current task analysis.
 
 ## 5. Script Knowledge-Accuracy Audit
+
+Before this audit, complete a problem-understanding audit for accuracy-sensitive tasks.
+
+Create this table:
+
+`given/condition | target requirement | constraint | inferred relationship | solution step | answer/construction | verified? | risk`
+
+Rules:
+
+- For math/puzzle/route/proof tasks, derive the answer from the exact givens before drawing.
+- Do not replace the problem type with a visually convenient but different task.
+- Do not assume missing geometry, axes, routes, object counts, or causal links that are not in the prompt or verified reference.
+- If the answer path is uncertain, ask for clarification or verify before storyboarding.
+- The storyboard must follow the verified solution path, not a guessed visual sequence.
 
 Before storyboard or implementation, review the script for:
 
@@ -267,6 +299,7 @@ If the knowledge point cannot be expressed accurately in SVG, change the visual 
 
 ### HyperFrames
 
+- Prefer using the local `hyperframes` dependency from `package.json`; install dependencies before relying on `npx`.
 - Create a standard HyperFrames composition.
 - Declare `data-composition-id`, `data-width`, `data-height`, `data-duration`.
 - Mount audio with clip timing attributes.
@@ -276,6 +309,7 @@ If the knowledge point cannot be expressed accurately in SVG, change the visual 
 
 ### Remotion
 
+- Prefer using local `remotion`, `@remotion/cli`, `@remotion/renderer`, `react`, and `react-dom` dependencies from `package.json`; install dependencies before implementation.
 - Create a standard Remotion project.
 - Use `Composition` with width, height, fps, and `durationInFrames`.
 - Use `useCurrentFrame`, fps, `interpolate`, and deterministic frame math.
@@ -323,7 +357,7 @@ If unnecessary elements, unclear visual expression, or inaccurate visual meaning
 
 `timestamp/scene | issue | why it hurts clarity or accuracy | suggested options`
 
-Then ask the user to decide before changing the design direction, unless the user has already explicitly authorized the fix.
+If the issue is an objective logic, answer, layout, missing asset, timing, export, or visual contradiction error, fix it and re-check before presenting the preview as ready. Ask the user to decide only when the choice is subjective design direction or there are multiple valid interpretations.
 
 ## 16. Knowledge, Stage, Style, And Continuity QA
 
@@ -435,7 +469,11 @@ After export:
 
 ## 20. Common Failure Modes And Fixes
 
+- **Misunderstood task or wrong answer**: stop implementation; rebuild the givens/target/constraints table; verify the solving path; revise the storyboard and visuals before preview/export.
+- **Skipped Remotion/HyperFrames**: restart technical planning; select HyperFrames or Remotion as the primary route; use standalone HTML/SVG/Canvas only as an internal layer or prototype.
+- **Missing tooling**: install or declare Remotion/HyperFrames dependencies via `package.json`; verify CLI availability before generating project files.
 - **Ignored issue/lesson memory**: read `memory/rules.json`, search `memory/issue_log.md` and `memory/lessons_index.md` by task tags, read only selected entries/files, and state how they apply.
+- **Weak self-check**: run the problem logic, visual causality, layout, timing, and export checks; if a concrete error is found, fix and re-check before telling the user it is done.
 - **Script knowledge is inaccurate**: pause production, produce an audit table, propose corrected wording, and ask for confirmation.
 - **Visual model is scientifically/historically wrong**: rebuild the knowledge-stage visual model table; verify references; redraw the model for the correct stage.
 - **Final animation clashes with source video**: extract style traits from the reference, embed diagrams as in-world screens/holograms/props, and revise palette/material/lighting/camera.

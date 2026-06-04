@@ -36,4 +36,7 @@ Use these tags for lesson retrieval. Keep tags short and stable.
 - visual-layout-error
 - timing-sync-error
 - export-format-error
-
+- problem-understanding-error
+- tooling-missing-error
+- memory-retrieval-error
+- self-check-error
