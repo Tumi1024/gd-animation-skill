@@ -83,6 +83,65 @@ generate-demo-animation-skill/
 - `examples/`：案例模板和后续可沉淀的示例案例。
 - `agents/openai.yaml`：Codex UI 展示元数据。
 
+
+
+# 贡献经验库（Memory / Rules）
+
+本项目会持续积累动画制作过程中的问题、解决方案和最佳实践。
+
+如果你在使用过程中发现了新的问题或更好的解决方案，欢迎贡献到经验库。
+
+## 贡献步骤
+
+### 1. Fork 本仓库
+
+点击 GitHub 页面右上角 Fork。
+
+### 2. 克隆自己的 Fork
+
+git clone https://github.com/<YOUR_GITHUB_USERNAME>/generate-demo-animation-skill.git
+
+### 3. 添加经验记录
+
+请将新增内容放入：
+
+memory/
+rules/
+logs/
+
+对应目录。
+
+推荐格式：
+
+- 问题描述
+- 复现条件
+- 解决方案
+- 适用版本
+
+### 4. 提交修改
+
+git add .
+git commit -m "Add new animation workflow knowledge"
+
+### 5. 推送
+
+git push origin main
+
+### 6. 提交 Pull Request
+
+回到原项目页面提交 Pull Request。
+
+## 经验库规范
+
+新增记录请尽量使用统一格式：
+
+- Category（分类）
+- Problem（问题）
+- Cause（原因）
+- Solution（解决方案）
+- Tags（标签）
+
+这样方便后续检索和自动学习。
 ## 发布前检查
 
 提交前建议运行：
