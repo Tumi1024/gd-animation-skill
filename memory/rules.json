@@ -3,7 +3,8 @@
   "purpose": "Rules for targeted retrieval and update of reusable issue memory before and after generate-demo-animation tasks.",
   "pre_task_retrieval": {
     "must_read": [
-      "memory/rules.json"
+      "memory/rules.json",
+      "rules/production-rules.md"
     ],
     "must_search": [
       "memory/issue_log.md",

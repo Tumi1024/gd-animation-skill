@@ -1,6 +1,6 @@
 ---
 name: generate-demo-animation
-description: Use when the user says "生成演示动画" or asks to create, design, modify, preview, or export a programmatic demo/explainer/teaching/knowledge-visualization animation using HyperFrames or Remotion. Applies to scripts, storyboards, narration audio, subtitles, images, assets, data, process explanations, product demos, scientific visualizations, course animations, and other video animation tasks that must be editable, previewable, and exportable. Prioritize HyperFrames for HTML/CSS/SVG/Canvas/GSAP/audio-synced animations and Remotion for React/componentized/data-driven/batch video generation.
+description: Mandatory for requests containing 生成演示动画, 生成教学动画, 制作 Remotion 动画, 制作 HyperFrames 动画, 制作课件动画, 根据文稿生成动画分镜, 生成可预览动画项目, 演示动画, 教学动画, 课件动画, Remotion动画, HyperFrames动画, 代码动画, 可预览动画, or 制作演示动画. Use to create, design, modify, preview, or export programmatic demo/explainer/teaching/courseware/code animations using HyperFrames, Remotion, or Manim when appropriate. Must read memory/ and rules/ before storyboarding or code; must not skip the skill workflow.
 ---
 
 # Generate Demo Animation
@@ -9,9 +9,36 @@ Use this skill to make production-ready programmatic animation videos, not dispo
 
 At the start of every task, enforce five gates before implementation: problem-understanding audit, issue/lesson memory retrieval, HyperFrames-or-Remotion route selection, tooling readiness check, and strict self-check plan. If any gate fails, stop and fix the plan before coding.
 
-For the full rule set, read `references/production-rules.md` when starting a new animation project, when changing architecture, when syncing to audio/subtitles, or before final export.
+For the full rule set, read `rules/production-rules.md` when starting a new animation project, when changing architecture, when syncing to audio/subtitles, or before final export. `references/production-rules.md` is kept as a compatibility copy.
 
 Use memory only by targeted retrieval. Before a new animation task, read `memory/rules.json`, then search `memory/issue_log.md` and `memory/lessons_index.md` by task tags. Select the most relevant issue entries and at most 3 lesson files. Do not read all `memory/lessons/` files, all archived cases, or the full issue log when targeted search is enough.
+
+## 强制触发规则
+
+当用户提出以下任务时，必须使用本 Skill：
+
+- 生成演示动画
+- 生成教学动画
+- 制作 Remotion 动画
+- 制作 HyperFrames 动画
+- 制作课件动画
+- 根据文稿生成动画分镜
+- 生成可预览动画项目
+- 演示动画
+- 教学动画
+- 课件动画
+- Remotion动画
+- HyperFrames动画
+- 代码动画
+- 可预览动画
+- 制作演示动画
+
+执行本 Skill 时必须：
+
+1. 先读取 `memory/` 和 `rules/`。
+2. 再制定分镜方案。
+3. 再判断 Remotion / HyperFrames / Manim。
+4. 不允许直接跳过 Skill 流程生成代码。
 
 ## Core Stance
 
@@ -31,11 +58,12 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
      - Expression type: timeline, map-location, process-demo, quantity-change, structure-breakdown, comparison, causality, spatial-relationship, camera-motion, transparent-export, or other.
      - Potential risks: knowledge-expression-error, animation-design-error, technical-implementation-error, visual-layout-error, timing-sync-error, export-format-error, or other.
    - Read `memory/rules.json`.
+   - Read `rules/production-rules.md`.
    - Search `memory/issue_log.md` with the task tags, object names, and risk tags. Prefer `rg` and read only matching entry ranges.
    - Select up to 5 issue entries with the highest overlap in content domain, expression type, object type, and risk.
    - State the selected issue IDs and the concrete rule they impose on the current task.
    - If no issue entry matches, state that no similar issue was found.
-   - This step is mandatory. Do not proceed to content analysis, storyboarding, or code if `memory/rules.json` has not been read and `memory/issue_log.md` plus `memory/lessons_index.md` have not been searched.
+   - This step is mandatory. Do not proceed to content analysis, storyboarding, or code if `memory/rules.json` and `rules/production-rules.md` have not been read and `memory/issue_log.md` plus `memory/lessons_index.md` have not been searched.
 
 2. **Retrieve Lessons**
    - Search only `memory/lessons_index.md` for matching lessons.
@@ -67,7 +95,7 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
    - Note why the chosen medium fits.
    - Check whether the project already has the required tooling. Prefer the repository `package.json` if present; otherwise run or recommend `npm install` for Remotion/HyperFrames dependencies before implementation.
    - Use the bundled starter templates in `templates/remotion/` or `templates/hyperframes/` when creating a new project from scratch.
-   - Use Manim only when formula/geometric derivation is genuinely needed, and still keep video export in scope.
+   - Judge Remotion / HyperFrames / Manim only after memory/rules retrieval and storyboard planning. Use Manim only when formula/geometric derivation is genuinely needed, and still keep video export in scope.
 
 6. **Build Time Plan**
    - If audio/subtitles exist, read the duration/timecodes and build a "timecode -> line/content -> visual action -> element state" table.
@@ -144,6 +172,7 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
 - Do not skip the problem-understanding audit for math, science, puzzle, route, proof, diagram, or accuracy-sensitive tasks. Wrong interpretation or wrong answer invalidates the animation.
 - Do not implement the final animation as plain HTML/SVG/Canvas when HyperFrames or Remotion can satisfy the task. Plain HTML/SVG/Canvas may be used only as a prototype layer or inside HyperFrames/Remotion.
 - Do not start coding before checking Remotion/HyperFrames tooling and selecting one as the primary route.
+- Do not generate code directly after the user request. Read `memory/` and `rules/`, create the storyboard/plan, then judge Remotion / HyperFrames / Manim.
 - Do not leave debug UI, browser controls, side panels, caption boxes, or progress controls in final video unless requested.
 - Do not read all lesson files, all archived cases, or the full issue log during normal generation. Retrieve issue entries by searching `memory/issue_log.md` with task tags, then retrieve lessons from `memory/lessons_index.md` and read at most 3 lesson files.
 - Do not proceed if issue/lesson memory was not retrieved. Read/search the memory files first, then state which rules apply.
