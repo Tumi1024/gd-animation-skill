@@ -12,11 +12,15 @@ cd ~/.agents/skills
 git clone https://github.com/Tumi1024/gd-animation-skill.git generate-demo-animation
 ```
 
+安装完成后，必须新开 Codex 会话，Skill 才会被重新加载并生效。
+
 ## 更新
 ```bash
 cd ~/.agents/skills/generate-demo-animation
 git pull
 ```
+
+更新完成后，也必须新开 Codex 会话。
 
 ## 使用方法
 
