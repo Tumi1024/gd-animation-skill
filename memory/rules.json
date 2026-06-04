@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "purpose": "Rules for targeted retrieval and update of reusable issue memory before and after generate-demo-animation tasks.",
+  "pre_task_retrieval": {
+    "must_read": [
+      "memory/rules.json"
+    ],
+    "must_search": [
+      "memory/issue_log.md",
+      "memory/lessons_index.md"
+    ],
+    "search_method": "Use task tags, object names, and risk tags with rg/find. Read only matching issue entry ranges and selected lesson files.",
+    "max_issue_entries": 5,
+    "max_lesson_files": 3,
+    "do_not": [
+      "Do not read all memory/lessons files.",
+      "Do not read all archived cases.",
+      "Do not read the entire issue log when targeted search is enough."
+    ]
+  },
+  "issue_entry_schema": {
+    "id": "Ixxx",
+    "tags": ["content-domain", "expression-type", "risk", "object-type"],
+    "trigger": "When this issue is relevant.",
+    "mistake": "The previous failure mode.",
+    "fix": "The concrete correction.",
+    "rule": "The reusable rule to apply before implementation.",
+    "source": "Project or task where the issue occurred."
+  },
+  "post_task_update": {
+    "append_issue_when": [
+      "The user points out a new reusable problem.",
+      "A new correction prevents a recurring visual, logic, timing, or export failure.",
+      "The current task explicitly includes updating this skill memory."
+    ],
+    "append_location": "memory/issue_log.md",
+    "format": "Append one compact Markdown entry with id, tags, trigger, mistake, fix, rule, and source."
+  }
+}

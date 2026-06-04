@@ -1,0 +1,4 @@
+interface:
+  display_name: "生成演示动画"
+  short_description: "使用 HyperFrames 或 Remotion 制作可预览可导出程序化演示动画"
+  default_prompt: "生成演示动画：请根据我的脚本、素材或音频，先拆解内容和时间轴，提交方案确认后再制作可预览、可导出的视频动画。"

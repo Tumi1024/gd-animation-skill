@@ -1,0 +1,72 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+.env/
+
+# Environment and secrets
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Caches
+.cache/
+cache/
+*.cache
+.pytest_cache/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.turbo/
+.next/
+.vite/
+.parcel-cache/
+.waveform-cache/
+.thumbnails/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temporary render/check outputs
+renders/
+render/
+out/
+output/
+outputs/
+dist/
+build/
+frames/
+frame-checks/
+preview-check/
+preview-checks/
+screenshots/
+tmp/
+temp/
+*.tmp
+
+# Large video/audio exports
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.m4v
+*.wav
+*.aiff
+*.flac
+
+# Keep placeholder files in ignored directories
+!.gitkeep
