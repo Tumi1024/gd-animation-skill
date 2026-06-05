@@ -1,4 +1,4 @@
 interface:
   display_name: "生成演示动画"
   short_description: "触发演示/教学/课件/代码动画任务，先读 memory/rules 再制作可预览动画"
-  default_prompt: "生成演示动画：请先读取 memory/ 和 rules/，校验题意和解题逻辑，再制定分镜方案并判断 Remotion / HyperFrames / Manim，提交场景、时间轴、元素状态、关键动作和自检清单。"
+  default_prompt: "生成演示动画：请先读取 memory/、rules/reference-index.md、production rules，并按任务选择教学/数学/Remotion/Manim/分镜规则，校验题意和解题逻辑，再制定分镜方案并判断 Remotion / HyperFrames / Manim。"

@@ -9,7 +9,7 @@ Use this skill to make production-ready programmatic animation videos, not dispo
 
 At the start of every task, enforce five gates before implementation: problem-understanding audit, issue/lesson memory retrieval, HyperFrames-or-Remotion route selection, tooling readiness check, and strict self-check plan. If any gate fails, stop and fix the plan before coding.
 
-For the full rule set, read `rules/production-rules.md` when starting a new animation project, when changing architecture, when syncing to audio/subtitles, or before final export. `references/production-rules.md` is kept as a compatibility copy.
+For the full rule set, read `rules/reference-index.md` and `rules/production-rules.md` when starting a new animation project, when changing architecture, when syncing to audio/subtitles, or before final export. `references/production-rules.md` is kept as a compatibility copy.
 
 Use memory only by targeted retrieval. Before a new animation task, read `memory/rules.json`, then search `memory/issue_log.md` and `memory/lessons_index.md` by task tags. Select the most relevant issue entries and at most 3 lesson files. Do not read all `memory/lessons/` files, all archived cases, or the full issue log when targeted search is enough.
 
@@ -40,6 +40,19 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
 3. 再判断 Remotion / HyperFrames / Manim。
 4. 不允许直接跳过 Skill 流程生成代码。
 
+## Reference Rule Routing
+
+After reading `rules/reference-index.md`, select task-specific rule files:
+
+- Teaching animation, courseware animation, explainer workflow, or script-to-storyboard: read `rules/general-teaching-animation-workflow.md`.
+- Math, geometry, route, proof, formula, quantity relation, or problem-solving animation: read `rules/math-animation-workflow.md`.
+- Remotion project, route map, data-driven animation, timeline, editable coordinates, or React video: read `rules/remotion-workflow.md`.
+- Manim, formula derivation, geometry proof, graph construction, or precise math object animation: read `rules/manim-workflow.md`.
+- Any Remotion / HyperFrames / Manim decision: read `rules/remotion-manim-decision.md`.
+- Storyboard, storyboard image prompt, first-frame prompt, visual reference, AI image/video mixed plan: read `rules/storyboard-prompt-rules.md`.
+
+When a task matches more than one category, read all relevant rule files before presenting the plan.
+
 ## Core Stance
 
 - Act as a programmatic animation director, knowledge-visualization designer, and HyperFrames/Remotion engineer.
@@ -58,12 +71,14 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
      - Expression type: timeline, map-location, process-demo, quantity-change, structure-breakdown, comparison, causality, spatial-relationship, camera-motion, transparent-export, or other.
      - Potential risks: knowledge-expression-error, animation-design-error, technical-implementation-error, visual-layout-error, timing-sync-error, export-format-error, or other.
    - Read `memory/rules.json`.
+   - Read `rules/reference-index.md`.
    - Read `rules/production-rules.md`.
+   - Read task-specific rule files selected from `rules/reference-index.md`.
    - Search `memory/issue_log.md` with the task tags, object names, and risk tags. Prefer `rg` and read only matching entry ranges.
    - Select up to 5 issue entries with the highest overlap in content domain, expression type, object type, and risk.
    - State the selected issue IDs and the concrete rule they impose on the current task.
    - If no issue entry matches, state that no similar issue was found.
-   - This step is mandatory. Do not proceed to content analysis, storyboarding, or code if `memory/rules.json` and `rules/production-rules.md` have not been read and `memory/issue_log.md` plus `memory/lessons_index.md` have not been searched.
+   - This step is mandatory. Do not proceed to content analysis, storyboarding, or code if `memory/rules.json`, `rules/reference-index.md`, `rules/production-rules.md`, and task-specific rule files have not been read and `memory/issue_log.md` plus `memory/lessons_index.md` have not been searched.
 
 2. **Retrieve Lessons**
    - Search only `memory/lessons_index.md` for matching lessons.
@@ -172,7 +187,7 @@ Use memory only by targeted retrieval. Before a new animation task, read `memory
 - Do not skip the problem-understanding audit for math, science, puzzle, route, proof, diagram, or accuracy-sensitive tasks. Wrong interpretation or wrong answer invalidates the animation.
 - Do not implement the final animation as plain HTML/SVG/Canvas when HyperFrames or Remotion can satisfy the task. Plain HTML/SVG/Canvas may be used only as a prototype layer or inside HyperFrames/Remotion.
 - Do not start coding before checking Remotion/HyperFrames tooling and selecting one as the primary route.
-- Do not generate code directly after the user request. Read `memory/` and `rules/`, create the storyboard/plan, then judge Remotion / HyperFrames / Manim.
+- Do not generate code directly after the user request. Read `memory/`, `rules/reference-index.md`, `rules/production-rules.md`, and selected task-specific rules; create the storyboard/plan; then judge Remotion / HyperFrames / Manim.
 - Do not leave debug UI, browser controls, side panels, caption boxes, or progress controls in final video unless requested.
 - Do not read all lesson files, all archived cases, or the full issue log during normal generation. Retrieve issue entries by searching `memory/issue_log.md` with task tags, then retrieve lessons from `memory/lessons_index.md` and read at most 3 lesson files.
 - Do not proceed if issue/lesson memory was not retrieved. Read/search the memory files first, then state which rules apply.

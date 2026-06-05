@@ -4,7 +4,16 @@
   "pre_task_retrieval": {
     "must_read": [
       "memory/rules.json",
+      "rules/reference-index.md",
       "rules/production-rules.md"
+    ],
+    "must_select_rule_files": [
+      "rules/general-teaching-animation-workflow.md",
+      "rules/math-animation-workflow.md",
+      "rules/remotion-workflow.md",
+      "rules/manim-workflow.md",
+      "rules/remotion-manim-decision.md",
+      "rules/storyboard-prompt-rules.md"
     ],
     "must_search": [
       "memory/issue_log.md",
@@ -21,6 +30,7 @@
     ],
     "must_state_before_code": [
       "Task tags used for retrieval.",
+      "Rule files selected from rules/reference-index.md.",
       "Issue IDs selected and their concrete rules.",
       "Lesson IDs selected and their concrete rules, or that no relevant lesson was found."
     ]
