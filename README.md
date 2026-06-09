@@ -54,6 +54,9 @@ generate-demo-animation-skill/
 ├── .gitignore
 ├── agents/
 │   └── openai.yaml
+├── skills/
+│   └── classroom-animation-preflight/
+│       └── SKILL.md
 ├── references/
 │   └── production-rules.md
 ├── memory/
@@ -75,6 +78,7 @@ generate-demo-animation-skill/
 ## 内容说明
 
 - `SKILL.md`：skill 入口文件，包含触发说明、工作流和硬规则。
+- `skills/classroom-animation-preflight/SKILL.md`：课中动画几何、路线、拼图类项目的预检规则。
 - `references/production-rules.md`：动画制作规则库。
 - `memory/rules.json`：结构化规则。
 - `memory/issue_log.md`：可检索的问题记录库。
