@@ -225,3 +225,17 @@ Fix: Search the source and production plan for the rejected concept before expor
 Rule: Before export, run a targeted stale-concept check for rejected terms, labels, and visual metaphors. The final summary must match the accepted mathematical relation.
 
 Source: `examples/puzzle-board-fill-demo`
+
+## I017: Use Drag Calibration For Repeated Position Feedback
+
+Tags: workflow, visual-layout-error, coordinate-editing, drag-calibration, remotion, hyperframes, route, shortest-path
+
+Trigger: A user says an element position is inaccurate, offset, not aligned to the floor/wall/reference image, or provides screenshot annotations that are difficult to translate into exact coordinates.
+
+Mistake: Repeatedly guessing numeric coordinates from screenshots, causing lines, points, labels, or route nodes to remain visibly offset after several revisions.
+
+Fix: Add a temporary preview-only drag-calibration mode for the affected element points. Give each handle a clear name, tell the user which point(s) to drag, read the adjusted coordinates, freeze them into structured constants or JSON, recompute all dependent geometry, and regenerate the preview.
+
+Rule: When visual placement feedback repeats or cannot be resolved reliably from text, use temporary drag handles instead of guessing. Final export must remove drag handles, reset buttons, calibration panels, coordinate labels, and other editor UI.
+
+Source: `examples/triangular-exhibit-route-remotion`

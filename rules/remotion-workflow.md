@@ -43,6 +43,8 @@ remotion-project/
 - Do not bury editable timing/position values inside scattered JSX.
 - Provide initial coordinates and time nodes that can be manually adjusted.
 - Use stable IDs for scenes, elements, labels, and route nodes.
+- When visual placement cannot be corrected reliably from text, add a temporary editor mode with draggable control points for the affected coordinates. Persist or log the adjusted coordinates, then freeze those values into structured constants or JSON.
+- After freezing adjusted coordinates, recompute all dependent geometry and remove the editor mode from the final export path.
 
 ## Component Rules
 
@@ -51,6 +53,7 @@ remotion-project/
 - Use `staticFile` for assets and `Audio` for sound.
 - Keep preview/editor components separate from final video components.
 - Hide editor UI in final export.
+- Drag handles, reset buttons, coordinate labels, and calibration instruction panels are preview-only UI. They must not appear in final rendered video unless the user explicitly asks for an editor demo.
 
 ## Export Rules
 

@@ -160,6 +160,9 @@ When a task matches more than one category, read all relevant rule files before 
    - Provide a preview URL/path.
    - Check that the current visual matches the current script/audio moment and the validated answer/logic path.
    - Check whether the frame contains unnecessary elements, unclear visual expression, unclear styling/motion, or inaccurate visual meaning. If so, report the issue and ask the user to decide before changing it.
+   - If the user says an element position is inaccurate, offset, not aligned with a screenshot mark, or hard to describe precisely, switch that element into a temporary drag-calibration mode instead of repeatedly guessing coordinates.
+   - In drag-calibration mode, expose only the relevant control points with clear names, tell the user which point(s) to drag, then read the adjusted coordinates and freeze them into the animation code.
+   - After freezing dragged coordinates, recompute every dependent element, regenerate the preview, and remove drag handles, reset buttons, helper panels, and debug labels before final export.
    - If logic, answer, layout, timing, or visual meaning is wrong, self-correct and regenerate the preview before presenting it as ready.
    - Modify only the affected scope when the user gives feedback.
 
@@ -198,6 +201,7 @@ When a task matches more than one category, read all relevant rule files before 
 - Do not insert a visually unrelated animation into an existing video. Match the source video's style system first.
 - Do not break visual continuity in progressive knowledge or story sequences. Keep style, composition, structure, camera logic, and recurring visual anchors coherent unless the break is intentional and justified.
 - Do not let text overlap the subject, leave the frame, or hide important motion.
+- Do not keep guessing coordinates after repeated visual-position feedback. Use a temporary drag-calibration preview, then freeze the user-adjusted coordinates into deterministic code.
 - Do not silently accept unnecessary elements, unclear visual expression, unclear style/motion, or inaccurate visual meaning. Flag these issues to the user and wait for a decision before changing direction.
 - Do not use `Date.now`, `performance.now`, `requestAnimationFrame`, `setInterval`, or CSS infinite animations for core exported motion.
 - Use seeded or deterministic logic for particles, flicker, random layouts, and loops.
