@@ -57,6 +57,15 @@ generate-demo-animation-skill/
 ├── skills/
 │   └── classroom-animation-preflight/
 │       └── SKILL.md
+├── rules/
+│   ├── reference-index.md
+│   ├── production-rules.md
+│   ├── general-teaching-animation-workflow.md
+│   ├── math-animation-workflow.md
+│   ├── remotion-workflow.md
+│   ├── manim-workflow.md
+│   ├── remotion-manim-decision.md
+│   └── storyboard-prompt-rules.md
 ├── references/
 │   └── production-rules.md
 ├── memory/
@@ -68,21 +77,34 @@ generate-demo-animation-skill/
 │       ├── L001.md
 │       ├── L002.md
 │       ├── L003.md
-│       └── L004.md
-└── examples/
+│       ├── L004.md
+│       └── L005.md
+├── templates/
+│   ├── hyperframes/
+│   │   └── index.html
+│   └── remotion/
+│       └── BasicComposition.tsx
+├── scripts/
+│   └── check-tooling.mjs
+├── examples/
     ├── case_template.md
-    └── archived_cases/
-        └── .gitkeep
+│   └── archived_cases/
+│       └── .gitkeep
+├── package.json
+└── package-lock.json
 ```
 
 ## 内容说明
 
 - `SKILL.md`：skill 入口文件，包含触发说明、工作流和硬规则。
 - `skills/classroom-animation-preflight/SKILL.md`：课中动画几何、路线、拼图类项目的预检规则。
+- `rules/`：按教学、数学、Remotion、Manim、分镜提示词等任务类型拆分的生产规则。
 - `references/production-rules.md`：动画制作规则库。
 - `memory/rules.json`：结构化规则。
 - `memory/issue_log.md`：可检索的问题记录库。
 - `memory/lessons_index.md` 与 `memory/lessons/`：复用经验索引和 lesson 文件。
+- `templates/`：HyperFrames 与 Remotion 新项目模板。
+- `scripts/check-tooling.mjs`：制作前工具链检查脚本。
 - `examples/`：案例模板和后续可沉淀的示例案例。
 - `agents/openai.yaml`：Codex UI 展示元数据。
 
